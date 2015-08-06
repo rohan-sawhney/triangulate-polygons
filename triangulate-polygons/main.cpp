@@ -5,7 +5,7 @@
 #endif
 
 #include "PolygonTriangulator.h"
-#define MIN_DIST 1000
+#define MIN_DIST 100
 
 int gridX = 600;
 int gridY = 600;
@@ -132,8 +132,7 @@ void display()
         glLineWidth(3.0);
         if (points.size() > 1) {
             glColor3f(1.0f, 1.0f, 1.0f);
-            glBegin(GL_LINE_LOOP);
-            
+            glBegin(GL_LINES);
             for (size_t i = 0; i < points.size()-1; i++) {
                 glVertex2d(points[i]->x, points[i]->y);
                 glVertex2d(points[i+1]->x, points[i+1]->y);

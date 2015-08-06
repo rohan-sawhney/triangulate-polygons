@@ -171,7 +171,10 @@ std::vector<Face*> PolygonTriangulator::triangulateEarClipping(std::vector<Point
         int next = curr+1;
         if (next == size) next = 0;
         
-        faces.push_back(new Face(points[prev], points[curr], points[next]));
+        
+        if (points.size() > 2) {
+            faces.push_back(new Face(points[prev], p, points[next]));
+        }
         
         // update previous point
         curr = prev;
