@@ -5,12 +5,11 @@
 #endif
 
 #include "PolygonTriangulator.h"
-#define MIN_DIST 100
+#define MIN_DIST 2000
 
 int gridX = 600;
 int gridY = 600;
 bool leftDrag = false;
-bool earClipping = true;
 
 PolygonTriangulator pt;
 std::vector<Point*> points;
@@ -156,13 +155,7 @@ void mouse(int button, int state, int x, int y)
             clearPoints();
         
         } else {
-            if (earClipping) {
-                glutSetWindowTitle("Triangulating Polygons - Ear Clipping");
-                faces = pt.triangulateEarClipping(points);
-            } else {
-                glutSetWindowTitle("Triangulating Polygons - Monotone Polygons");
-                faces = pt.triangulateMonotonePolygons(points);
-            }
+            faces = pt.triangulateEarClipping(points);
         }
         
         leftDrag = false;
@@ -198,9 +191,6 @@ void keyboard(unsigned char key, int x, int y)
             clearPoints();
             clearFaces();
             exit(0);
-        case ' ':
-            earClipping = !earClipping;
-            break;
     }
     
     glutPostRedisplay();
@@ -213,7 +203,7 @@ int main(int argc, char** argv)
     glutInit(&argc,argv);
     glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB);
     glutInitWindowSize(gridX, gridY);
-    glutCreateWindow("Triangulating Polygons");
+    glutCreateWindow("Polygon Triangulation - Ear Clipping");
     init();
     glutDisplayFunc(display);
     glutMouseFunc(mouse);

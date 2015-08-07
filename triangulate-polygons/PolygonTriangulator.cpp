@@ -171,7 +171,6 @@ std::vector<Face*> PolygonTriangulator::triangulateEarClipping(std::vector<Point
         int next = curr+1;
         if (next == size) next = 0;
         
-        
         if (points.size() > 2) {
             faces.push_back(new Face(points[prev], p, points[next]));
         }
@@ -200,13 +199,6 @@ std::vector<Face*> PolygonTriangulator::triangulateEarClipping(std::vector<Point
         
         }
     }
-    
-    return faces;
-}
-
-std::vector<Face*> PolygonTriangulator::triangulateMonotonePolygons(std::vector<Point*>& points0)
-{
-    std::vector<Face*> faces;
     
     return faces;
 }

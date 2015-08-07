@@ -72,9 +72,10 @@ public:
     
     // triangulates points on a polygonal face using the Ear Clipping algorithm
     std::vector<Face*> triangulateEarClipping(std::vector<Point*>& points0);
-    
-    // triangulates points on a polygonal face by decomposing them into monotone polygons
-    std::vector<Face*> triangulateMonotonePolygons(std::vector<Point*>& points0);
+
+private:
+    // clean face memory
+    void clearFaces();
 };
 
 #endif
