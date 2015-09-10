@@ -140,7 +140,7 @@ void updateAdjacentPoint(Point *curr, Point *prev, Point *next,
 std::vector<Face*> PolygonTriangulator::triangulateEarClipping(std::vector<Point*>& points0)
 {
     std::vector<Face*> faces;
-    std::vector<Point*>& points = points0;
+    std::vector<Point*> points = points0;
     
     int size = (int)points.size();
     if (size < 4) {
